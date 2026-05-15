@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2, SendHorizontal } from "lucide-react";
 import * as React from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeSanitize from "rehype-sanitize";
+import remarkGfm from "remark-gfm";
 
 interface Doc {
   pageContent?: string;
@@ -102,7 +105,18 @@ const ChatComponent: React.FC = () => {
                 : "mr-auto bg-background text-foreground"
             }`}
           >
-            <p>{message.content}</p>
+            {message.role === "assistant" ? (
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeSanitize]}
+
+                // className="chat-markdown"
+              >
+                {message.content ?? ""}
+              </ReactMarkdown>
+            ) : (
+              <p className="whitespace-pre-wrap">{message.content}</p>
+            )}
 
             {message.role === "assistant" && message.documents?.length ? (
               <div className="mt-3 border-t border-border pt-3">
