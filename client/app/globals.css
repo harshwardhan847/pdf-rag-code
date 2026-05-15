@@ -45,24 +45,24 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --background: oklch(0.985 0.006 85);
+  --foreground: oklch(0.26 0.02 258);
+  --card: oklch(1 0.004 95);
+  --card-foreground: oklch(0.26 0.02 258);
+  --popover: oklch(1 0.004 95);
+  --popover-foreground: oklch(0.26 0.02 258);
+  --primary: oklch(0.57 0.14 195);
+  --primary-foreground: oklch(0.985 0.004 95);
+  --secondary: oklch(0.95 0.01 90);
+  --secondary-foreground: oklch(0.26 0.02 258);
+  --muted: oklch(0.95 0.01 90);
+  --muted-foreground: oklch(0.52 0.02 258);
+  --accent: oklch(0.95 0.01 90);
+  --accent-foreground: oklch(0.26 0.02 258);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.88 0.014 90);
+  --input: oklch(0.88 0.014 90);
+  --ring: oklch(0.57 0.14 195);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -117,6 +117,18 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background:
+      radial-gradient(
+        circle at 10% 10%,
+        color-mix(in oklch, var(--primary) 12%, transparent) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 85% 15%,
+        color-mix(in oklch, var(--foreground) 8%, transparent) 0%,
+        transparent 35%
+      ),
+      var(--background);
+    @apply text-foreground;
   }
 }
